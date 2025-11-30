@@ -1,0 +1,2 @@
+-- Round to nearest integersample
+SELECT CBBResidualPercentage, (CBBResidualPercentage*0.95) as CBBResidualPercentage_new, ROUND((CBBResidualPercentage*0.95),0,0)    FROM [FinancePortal].[dbo].[LenderVehicle];

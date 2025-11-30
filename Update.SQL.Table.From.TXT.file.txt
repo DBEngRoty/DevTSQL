@@ -1,0 +1,44 @@
+UPDATE dbo.Suppression_FIDO_Stage
+SET	Address1 = ISNULL(b.Address1,''),
+	Address2 = ISNULL(b.Address2,''),
+	City = ISNULL(b.City,''),
+	Province=ISNULL(b.Province,''),
+	Postal=ISNULL(b.Postal,''),
+	Status=ISNULL(b.Status,''),
+	ParsedAddress=ISNULL(b.ParsedAddress,'')
+FROM ( SELECT  * FROM
+	  OPENROWSET('Microsoft.Jet.OLEDB.4.0','TEXT;Database=F:\RMDB\WorkFiles\', 'Select * FROM FIDOSS#txt')
+	 )  as b  
+WHERE dbo.Suppression_FIDO_Stage.RowID = b.RowID
+
+
+/*
+SCHEMA.INI FOR TXTs FILE
+
+[FIDOSS.txt]
+Format=FixedLength
+
+Col1=FullName Text Width 17
+Col2=Address1 Text Width 30
+Col3=Address2 Text Width 30
+Col4=City Text Width 30
+Col5=Province Text Width 2
+Col6=Postal Text Width 6
+Col7=Status Text Width 10
+Col8=ParsedAddress Text Width 64
+Col9=RowID Text Width 7
+
+
+[CMADNS.txt]
+Format=FixedLength
+
+Col1=FullName Text Width 30
+Col2=Address1 Text Width 30
+Col3=Address2 Text Width 30
+Col4=City Text Width 30
+Col5=Province Text Width 2
+Col6=Postal Text Width 6
+Col7=Status Text Width 10
+Col8=ParsedAddress Text Width 64
+Col9=RowID Text Width 7
+

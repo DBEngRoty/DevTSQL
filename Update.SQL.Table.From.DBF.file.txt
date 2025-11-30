@@ -1,0 +1,7 @@
+Update dbo.RWCustomersActive_Stage 
+Set 
+ParsedAddress = b.ParsedAddr, 
+Status = b.Status 
+FROM(	SELECT * FROM 
+	OPENROWSET('MSDASQL','DSN=ToDBF_Suppression', 'Select RowId, ParsedAddr,Status from ToSweeper')) as b  
+WHERE dbo.RWCustomersActive_Stage.RowId = b.RowId

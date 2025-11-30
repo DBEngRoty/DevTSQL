@@ -1,0 +1,1 @@
+xp_cmdshell 'NET SEND WS443 "SALUT" ', NO_OUTPUT

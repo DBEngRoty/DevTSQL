@@ -1,0 +1,1 @@
+sp_rename 'Server_Audit_Thresholds.Max_Days_Old_Log_Baks', 'Max_Mins_Old_Log_Bak', 'COLUMN';
