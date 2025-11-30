@@ -1,0 +1,20 @@
+
+BEGIN TRAN T1
+
+UPDATE P SET 
+P.DSE_ID=V.DSE_ID,
+P.TopMergeFilePriority=2,
+P.Flag_AnalysisOnly=0
+FROM 
+ProspectPool.dbo.Prospect P,
+ProspectPool.dbo.VISA V
+WHERE 
+P.ProspectID = V.ProspectID AND
+P.Flag_AnalysisOnly=1 AND
+P.TopMergeFilePriority=99 AND
+P.DSE_ID = 0 AND  
+P.PROSPECTID IN (SELECT PROSPECTID FROM VISA) AND
+P.PROSPECTID IN (SELECT PROSPECTID FROM SOURCES WHERE FILEID=7) 
+
+ROLLBACK TRAN T1
+COMMIT TRAN T1

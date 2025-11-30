@@ -1,0 +1,3 @@
+
+USE master;
+ALTER DATABASE AdventureWorks SET RECOVERY FULL;

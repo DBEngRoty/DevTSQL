@@ -1,0 +1,5 @@
+DELETE FROM Audit_Data_Details
+DELETE FROM Audit_Data
+DELETE FROM Audit_JOB
+DELETE FROM Audit_TASK
+DELETE FROM Audit_Expired
